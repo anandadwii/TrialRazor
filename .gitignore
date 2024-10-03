@@ -1,0 +1,24 @@
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+bin/
+obj/
+publish/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+wwwroot/dist/
+wwwroot/node_modules/
+
+*.userosscache
+
+appsettings*.json
+
+
