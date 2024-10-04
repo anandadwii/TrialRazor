@@ -11,11 +11,10 @@ namespace TrialRazor.Models
         [Key] // must use this if Id is not a primary key
         public int Id { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Use letters and numbers only please")]
+        [RegularExpression(@"^[a-zA-Z0-9_,.\s]*$", ErrorMessage = "illegal characters in name.")]
         public string Name { get; set; } = String.Empty;
         [Display(Name = "Order Number")]
         [Required]
-        [Range(1, 100, ErrorMessage = "Display Order must be between 1 and 100 only")]
         public int DisplayOrder { get; set; }
     }
 }
