@@ -14,12 +14,12 @@
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="mb-3">
             <label asp-for="Category.Name" class="control-label"></label>
-            <input asp-for="Category.Name" type="text" name="Name" class="form-control" />
+            <input asp-for="Category.Name" type="text" class="form-control" />
             <span asp-validation-for="Category.Name" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Category.DisplayOrder" class="control-label"></label>
-            <input asp-for="Category.DisplayOrder" type="text" name="DisplayOrder" class="form-control" />
+            <input asp-for="Category.DisplayOrder" type="text" class="form-control" />
             <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
         </div>
         <div class="mb-3 text-end">
@@ -37,7 +37,7 @@
 
 @section Scripts {
     @{
-        @* await Html.RenderPartialAsync("_ValidationScriptsPartial"); *@
-        <partial name="_ValidationScriptsPartial"/>
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        @* <partial name="_ValidationScriptsPartial"/> *@
     }
 }

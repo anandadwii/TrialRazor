@@ -22,7 +22,7 @@ namespace TrialRazor.Pages.Categories
         }
 
         [BindProperty]
-        public Category Category { get; set; } = default!;
+        public Category Category { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,7 +48,7 @@ namespace TrialRazor.Pages.Categories
             if(Category.Name == Category.DisplayOrder.ToString()){
                 ModelState.AddModelError(string.Empty, "The DisplayOrder cannot exactly match the Name.");
             }
-
+            var category  = Category;
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -48,6 +48,7 @@ namespace TrialRazor.Pages.Categories
 
             _context.Category.Add(Category);
             await _context.SaveChangesAsync();
+            ModelState.Clear();
             TempData["success"] = "Category created successfully.";
 
             return RedirectToPage("./Index");
