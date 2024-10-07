@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+
+@if (SignInManager.IsSignedIn(User))
+{
+    if(User.IsInRole("Super Administrator") || User.IsInRole("Administrator") || User.IsInRole("Maintainer"))
+    {
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                title="User">Administrator/Maintaner</a>
+
+            <ul class="dropdown-menu">
+                <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="dropdown-item">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a asp-area="Identity" asp-page="/Account/Logout" class="dropdown-item">Logout</a></li>
+            </ul>
+        </li>
+
+    } else if(User.IsInRole("User"))
+    {
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                title="User">User</a>
+
+            <ul class="dropdown-menu">
+                <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="dropdown-item">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a asp-area="Identity" asp-page="/Account/Logout" class="dropdown-item">Logout</a></li>
+            </ul>
+        </li>
+    }
+    
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

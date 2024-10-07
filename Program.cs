@@ -2,12 +2,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TrialRazor.Data;
 using TrialRazor.Models;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TrialRazorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TrialRazorContext") ?? throw new InvalidOperationException("Connection string 'TrialRazorContext' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<TrialRazorContext>();
 
 var app = builder.Build();
 
